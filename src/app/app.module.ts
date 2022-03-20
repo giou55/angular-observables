@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { AngularObservablesComponent } from './pages/angular-observables/angular-observables.component';
 import { CustomObservableWithOperatorsComponent } from './pages/custom-observable-with-operators/custom-observable-with-operators.component';
+import { ForkJoinComponent } from './operators/fork-join/fork-join.component';
+import { SubjectsComponent } from './pages/subjects/subjects.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CustomObservableWithOperatorsComponent } from './pages/custom-observabl
     HomeComponent,
     UserComponent,
     AngularObservablesComponent,
-    CustomObservableWithOperatorsComponent
+    CustomObservableWithOperatorsComponent,
+    ForkJoinComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,

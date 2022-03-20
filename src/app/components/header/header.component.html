@@ -4,7 +4,23 @@
     <a class="mr-3" [routerLink]="['user', 2]">User 2</a>
     <a class="mr-3" [routerLink]="['user', 3]">User 3</a>
     <a class="mr-3" routerLink="customObservableWithOperators">Custom Observable With Operators</a>
-    <a routerLink="angularObservables">Angular Observables</a>
+    <a class="mr-3" routerLink="angularObservables">Angular Observables</a>
+    <div ngbDropdown class="d-inline-block">
+        <button  class="btn btn-outline-primary mr-3" id="dropdownBasic1" ngbDropdownToggle>Operators</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem routerLink="/">map</button>
+            <button ngbDropdownItem routerLink="/">filter</button>
+            <button ngbDropdownItem routerLink="/">switchMap</button>
+            <button ngbDropdownItem routerLink="/">take</button>
+            <button ngbDropdownItem routerLink="/">tap</button>
+            <button ngbDropdownItem routerLink="/">skip</button>
+            <button ngbDropdownItem routerLink="/">forkJoin</button>
+            <button ngbDropdownItem routerLink="/">combineLatest</button>
+            <button ngbDropdownItem routerLink="/">concat</button>
+            <button ngbDropdownItem routerLink="/">delay</button>
+        </div>
+    </div>
+    <a routerLink="/">Subjects</a>
 </div>
 
 <div>
