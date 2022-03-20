@@ -9,7 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
-import { OperatorsComponent } from './components/operators/operators.component';
+import { AngularObservablesComponent } from './pages/angular-observables/angular-observables.component';
+import { CustomObservableWithOperatorsComponent } from './pages/custom-observable-with-operators/custom-observable-with-operators.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OperatorsComponent } from './components/operators/operators.component';
     FooterComponent,
     HomeComponent,
     UserComponent,
-    OperatorsComponent
+    AngularObservablesComponent,
+    CustomObservableWithOperatorsComponent
   ],
   imports: [
     BrowserModule,
