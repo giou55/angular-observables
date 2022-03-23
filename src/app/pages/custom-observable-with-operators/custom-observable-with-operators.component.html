@@ -1,4 +1,53 @@
 <div>
     <p class="title">Custom Observable With Operators</p>
     <p>Values from custom observable: {{count}}</p>
+
+    <pre>
+        ngOnInit(): void {{ '{' }}
+            const customIntervalObservable = new Observable(observer => {{ '{' }}
+                let count = 0;
+                setInterval(() => {{ '{' }}
+                    observer.next(count);
+                    if (count === 10) {{ '{' }}
+                    observer.complete();
+                    }
+                    // error never happens
+                    if (count > 11) {{ '{' }}
+                    observer.error(new Error('Count is greater than 3!'));
+                    }
+                    count++;
+                }, 1000)
+            });
+        
+            this.subs = customIntervalObservable
+            // we add the operators
+            .pipe(
+                filter((data:any) => {{ '{' }}
+                    return data % 2 === 0;
+                }),
+                map((data:any) => {{ '{' }}
+                    return 'Round ' + (data);
+                })
+            )
+            // we listen to new values
+            .subscribe(
+                data => {{ '{' }}
+                    console.log(data);
+                    this.count = data;
+                },
+                error => {{ '{' }}
+                    console.log(error);
+                    alert(error.message);
+                },
+                () => {{ '{' }}
+                    console.log('Completed!');
+                    this.count = 'Completed!';
+                }
+            );
+        }
+        
+        ngOnDestroy(): void {{ '{' }}
+            this.subs.unsubscribe();
+        }
+    </pre>
 </div>
