@@ -6,13 +6,15 @@ import { UserComponent } from './pages/user/user.component';
 import { CustomObservableWithOperatorsComponent } from './pages/custom-observable-with-operators/custom-observable-with-operators.component';
 import { AngularObservablesComponent } from './pages/angular-observables/angular-observables.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
+import { TakeLastComponent } from './operators/take-last/take-last.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'user/:id', component: UserComponent},
   {path: 'customObservableWithOperators', component: CustomObservableWithOperatorsComponent},
   {path: 'angularObservables', component: AngularObservablesComponent},
-  {path: 'subjects', component: SubjectsComponent}
+  {path: 'subjects', component: SubjectsComponent},
+  {path: 'operators/takeLast', component: TakeLastComponent}
 ];
 
 @NgModule({

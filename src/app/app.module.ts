@@ -13,6 +13,8 @@ import { AngularObservablesComponent } from './pages/angular-observables/angular
 import { CustomObservableWithOperatorsComponent } from './pages/custom-observable-with-operators/custom-observable-with-operators.component';
 import { ForkJoinComponent } from './operators/fork-join/fork-join.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
+import { TakeComponent } from './operators/take/take.component';
+import { TakeLastComponent } from './operators/take-last/take-last.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SubjectsComponent } from './pages/subjects/subjects.component';
     AngularObservablesComponent,
     CustomObservableWithOperatorsComponent,
     ForkJoinComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    TakeComponent,
+    TakeLastComponent
   ],
   imports: [
     BrowserModule,

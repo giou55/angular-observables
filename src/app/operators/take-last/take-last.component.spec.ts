@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForkJoinComponent } from './fork-join.component';
+import { TakeLastComponent } from './take-last.component';
 
-describe('ForkJoinComponent', () => {
-  let component: ForkJoinComponent;
-  let fixture: ComponentFixture<ForkJoinComponent>;
+describe('TakeLastComponent', () => {
+  let component: TakeLastComponent;
+  let fixture: ComponentFixture<TakeLastComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForkJoinComponent ]
+      declarations: [ TakeLastComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForkJoinComponent);
+    fixture = TestBed.createComponent(TakeLastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
