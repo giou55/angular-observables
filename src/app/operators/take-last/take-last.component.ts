@@ -27,14 +27,4 @@ export class TakeLastComponent implements OnInit {
   // 99
   // 100
 
-
-  firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
-  secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
-  combinedTimers = combineLatest([this.firstTimer, this.secondTimer]).pipe(take(5)).subscribe(value => console.log('timer: ' + value));
-// timer: 0,0 after 0.5s
-// timer: 1,0 after 1s
-// timer: 1,1 after 1.5s
-// timer: 2,1 after 2s
-
 }
-
