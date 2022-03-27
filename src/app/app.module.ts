@@ -15,6 +15,7 @@ import { ForkJoinComponent } from './operators/fork-join/fork-join.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { TakeComponent } from './operators/take/take.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
+import { PipesComponent } from './pages/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TakeLastComponent } from './operators/take-last/take-last.component';
     ForkJoinComponent,
     SubjectsComponent,
     TakeComponent,
-    TakeLastComponent
+    TakeLastComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
