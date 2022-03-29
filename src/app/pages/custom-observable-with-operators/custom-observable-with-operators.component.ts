@@ -16,16 +16,17 @@ export class CustomObservableWithOperatorsComponent implements OnInit, OnDestroy
   constructor() { }
 
   ngOnInit(): void {
-    const customIntervalObservable = new Observable(observer => {
+    // the Observable constructor takes one argument: the subscribe function
+    const customIntervalObservable = new Observable(subscriber => {
       let count = 0;
       setInterval(() => {
-        observer.next(count);
+        subscriber.next(count);
         if (count === 10) {
-          observer.complete();
+          subscriber.complete();
         }
         // error never happens
         if (count > 11) {
-          observer.error(new Error('Count is greater than 3!'));
+          subscriber.error(new Error('Count is greater than 3!'));
         }
         count++;
       }, 1000)
@@ -41,7 +42,7 @@ export class CustomObservableWithOperatorsComponent implements OnInit, OnDestroy
         return 'Round ' + (data);
       })
     )
-    // we listen to new values
+    // we pass to subscribe function a observer object
     .subscribe(
       data => {
         console.log(data);

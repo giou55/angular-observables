@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pipes.component.css']
 })
 export class PipesComponent implements OnInit {
+  // after 2 secs the pageStatus property will take "Loaded" value
+  pageStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Loaded");
+    }, 3000);
+  });
 
   constructor() { }
 

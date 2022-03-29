@@ -18,5 +18,12 @@
         To feed a new value to the Subject, just call next(theValue), and it will be multicasted to the Observers registered to listen to the Subject.
     </pre>
 
-    <button class="btn btn-primary" (click)="onDisplayUser()">Click to See the User Name</button>
+    <p>User1: {{ user1 }}</p>
+    <p>User2: {{ user2 }}</p>
+
+    <p>
+        <button class="btn btn-primary" (click)="onDisplayUsername()">Click to See the User Name</button>
+    </p>
+
+    <p>Number: {{ number}}</p>
 </div>

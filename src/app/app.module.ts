@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,12 +15,12 @@ import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { TakeComponent } from './operators/take/take.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
 import { PipesComponent } from './pages/pipes/pipes.component';
+import { TestingComponent } from './pages/testing/testing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
     FooterComponent,
     HomeComponent,
     UserComponent,
@@ -31,7 +30,8 @@ import { PipesComponent } from './pages/pipes/pipes.component';
     SubjectsComponent,
     TakeComponent,
     TakeLastComponent,
-    PipesComponent
+    PipesComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,
