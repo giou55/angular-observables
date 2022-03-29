@@ -16,6 +16,9 @@ import { TakeComponent } from './operators/take/take.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
 import { PipesComponent } from './pages/pipes/pipes.component';
 import { TestingComponent } from './pages/testing/testing.component';
+import { SubjectComponent } from './subjects/subject/subject.component';
+import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
+import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { TestingComponent } from './pages/testing/testing.component';
     TakeComponent,
     TakeLastComponent,
     PipesComponent,
-    TestingComponent
+    TestingComponent,
+    SubjectComponent,
+    BehaviorSubjectComponent,
+    ReplaySubjectComponent
   ],
   imports: [
     BrowserModule,

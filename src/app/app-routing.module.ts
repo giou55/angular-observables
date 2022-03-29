@@ -9,6 +9,9 @@ import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { PipesComponent } from './pages/pipes/pipes.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
 import { TestingComponent } from './pages/testing/testing.component';
+import { SubjectComponent } from './subjects/subject/subject.component';
+import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
+import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,6 +20,9 @@ const routes: Routes = [
   {path: 'angularObservables', component: AngularObservablesComponent},
   {path: 'operators/takeLast', component: TakeLastComponent},
   {path: 'subjects', component: SubjectsComponent},
+  {path: 'subjects/subjects', component: SubjectComponent},
+  {path: 'subjects/behavior-subjects', component: BehaviorSubjectComponent},
+  {path: 'subjects/replay-subjects', component: ReplaySubjectComponent},
   {path: 'pipes', component: PipesComponent},
   {path: 'testing', component: TestingComponent},
 ];

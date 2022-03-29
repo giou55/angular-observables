@@ -11,6 +11,14 @@
             <button ngbDropdownItem routerLink="/operators/takeLast">takeLast</button>
         </div>
     </div>
+    <div ngbDropdown class="d-inline-block">
+        <button  class="btn btn-outline-primary mr-3" id="dropdownBasic" ngbDropdownToggle>Subjects</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic">
+            <button ngbDropdownItem routerLink="/subjects/subjects">Subjects</button>
+            <button ngbDropdownItem routerLink="/subjects/behavior-subjects">BehaviorSubjects</button>
+            <button ngbDropdownItem routerLink="/subjects/replay-subjects">ReplaySubjects</button>
+        </div>
+    </div>
     <a class="mr-3" routerLink="/subjects">Subjects</a>
     <a class="mr-3" routerLink="/pipes">Pipes</a>
     <a routerLink="/testing">Testing</a>
