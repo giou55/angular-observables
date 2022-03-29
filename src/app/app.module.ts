@@ -19,6 +19,7 @@ import { TestingComponent } from './pages/testing/testing.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
 import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
+import { SwitchMapComponent } from './operators/switch-map/switch-map.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject
     TestingComponent,
     SubjectComponent,
     BehaviorSubjectComponent,
-    ReplaySubjectComponent
+    ReplaySubjectComponent,
+    SwitchMapComponent
   ],
   imports: [
     BrowserModule,
