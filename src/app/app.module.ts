@@ -20,6 +20,7 @@ import { SubjectComponent } from './subjects/subject/subject.component';
 import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
 import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
 import { SwitchMapComponent } from './operators/switch-map/switch-map.component';
+import { MergeMapComponent } from './operators/merge-map/merge-map.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SwitchMapComponent } from './operators/switch-map/switch-map.component'
     SubjectComponent,
     BehaviorSubjectComponent,
     ReplaySubjectComponent,
-    SwitchMapComponent
+    SwitchMapComponent,
+    MergeMapComponent
   ],
   imports: [
     BrowserModule,
