@@ -1,13 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { mergeMap, map } from 'rxjs/operators';
+import { concatMap, map } from 'rxjs/operators';
 import { fromEvent, Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-merge-map',
-  templateUrl: './merge-map.component.html',
-  styleUrls: ['./merge-map.component.css']
+  selector: 'app-concat-map',
+  templateUrl: './concat-map.component.html',
+  styleUrls: ['./concat-map.component.css']
 })
-export class MergeMapComponent implements OnInit, AfterViewInit {
+export class ConcatMapComponent implements OnInit, AfterViewInit {
   obs1:Observable<any>;
   obs2:Observable<any>;
   result:Observable<any>;
@@ -26,10 +26,10 @@ export class MergeMapComponent implements OnInit, AfterViewInit {
     this.obs2 = fromEvent(this.input2.nativeElement, 'input');
 
     this.result = this.obs1.pipe(
-        mergeMap(event1 => {
+        concatMap(event1 => {
           return this.obs2.pipe(
             map(event2 => {
-              return event1.target.value + event2.target.value;
+              return event1.target.value  + event2.target.value;
             })
         )
       })

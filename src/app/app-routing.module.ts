@@ -10,6 +10,8 @@ import { PipesComponent } from './pages/pipes/pipes.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
 import { SwitchMapComponent } from './operators/switch-map/switch-map.component';
 import { MergeMapComponent } from './operators/merge-map/merge-map.component';
+import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
+import { ZipComponent } from './operators/zip/zip.component';
 import { TestingComponent } from './pages/testing/testing.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
@@ -23,6 +25,8 @@ const routes: Routes = [
   {path: 'operators/takeLast', component: TakeLastComponent},
   {path: 'operators/switchMap', component: SwitchMapComponent},
   {path: 'operators/mergeMap', component: MergeMapComponent},
+  {path: 'operators/concatMap', component: ConcatMapComponent},
+  {path: 'operators/zip', component: ZipComponent},
   {path: 'subjects', component: SubjectsComponent},
   {path: 'subjects/subjects', component: SubjectComponent},
   {path: 'subjects/behavior-subjects', component: BehaviorSubjectComponent},

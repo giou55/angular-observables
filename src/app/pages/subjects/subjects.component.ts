@@ -20,9 +20,8 @@ export class SubjectsComponent implements OnInit {
   ngOnInit(): void {
     this.subject1 = new Subject<String>();
     this.subject2 = new Subject<Number>();
-    this.observable = from([1, 2, 3, 4]);
     this.subject3 = new BehaviorSubject<Number>(0); // 0 is the initial value
-
+    this.observable = from([1, 2, 3, 4]);
 
     this.subject1.subscribe({
       next: (s) => this.user1 = s

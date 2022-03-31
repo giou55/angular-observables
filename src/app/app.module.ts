@@ -21,6 +21,8 @@ import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-s
 import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
 import { SwitchMapComponent } from './operators/switch-map/switch-map.component';
 import { MergeMapComponent } from './operators/merge-map/merge-map.component';
+import { ZipComponent } from './operators/zip/zip.component';
+import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MergeMapComponent } from './operators/merge-map/merge-map.component';
     BehaviorSubjectComponent,
     ReplaySubjectComponent,
     SwitchMapComponent,
-    MergeMapComponent
+    MergeMapComponent,
+    ZipComponent,
+    ConcatMapComponent
   ],
   imports: [
     BrowserModule,
