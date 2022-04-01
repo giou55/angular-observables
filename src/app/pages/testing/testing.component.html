@@ -1,5 +1,17 @@
 <div>
     <p class="title">Testing</p>
 
-    <p>Values: {{ output }}</p>
+    <div>
+        <p>First Post</p>
+        <p>Title: {{post?.title}}</p>
+        <p>Body: {{post?.body}}</p>
+
+        <p>Comments:</p>
+        <ul>
+            <li *ngFor="let comment of post?.comments">
+                {{comment.body}}
+            </li>
+        </ul>
+    </div>
+
 </div>

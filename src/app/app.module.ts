@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { SwitchMapComponent } from './operators/switch-map/switch-map.component'
 import { MergeMapComponent } from './operators/merge-map/merge-map.component';
 import { ZipComponent } from './operators/zip/zip.component';
 import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
+import { ShareComponent } from './operators/share/share.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +47,14 @@ import { ConcatMapComponent } from './operators/concat-map/concat-map.component'
     SwitchMapComponent,
     MergeMapComponent,
     ZipComponent,
-    ConcatMapComponent
+    ConcatMapComponent,
+    ShareComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

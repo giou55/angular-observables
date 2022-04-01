@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, interval, timer, of } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { interval, range, Observable } from 'rxjs';
+import { delay, mergeMap, concatMap, switchMap, exhaustMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-testing',
@@ -8,25 +9,52 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./testing.component.css']
 })
 export class TestingComponent implements OnInit {
-  output: any;
-  source: Observable<any>;
+  post: any;
+  postObs: Observable<any>;
+  commentsObs: Observable<any>;
+  postUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+  commentsUrl = 'https://jsonplaceholder.typicode.com/posts/1/comments';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.source = interval(500);
+    this.postObs = this.http.get<any>(this.postUrl);
+    this.commentsObs = this.http.get<any>(this.commentsUrl);
 
-    of(10, 20, 30).subscribe(
-      (x) => console.log(x)
-    );
+    // this.commentsObs
+    //   .pipe(
+    //     switchMap(comments => {
+    //       return this.postObs
+    //         .pipe(
+    //           map(post => {
+    //             post.comments = comments;
+    //             return post;
+    //           })
+    //         )
+    //     })
+    //   )
+    //   .subscribe(
+    //     (newpost) => {
+    //       console.log(newpost);
+    //       this.post = newpost
+    //     }
+    //   )
 
-    interval(1000)
-    .pipe(
-      takeUntil(timer(5000))
-    )
-    .subscribe(
-      x => console.log(x)
-    );
+      range(1,5)
+      .pipe(
+        delay(500),
+        concatMap(number => {
+          return this.postObs
+            .pipe(
+              delay(3000),
+              map(post => {
+                post.number = number;
+                return post;
+              })
+            )
+        })
+      )
+      .subscribe((post) => console.log(post.number))
   }
 
 }
