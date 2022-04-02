@@ -1,4 +1,25 @@
 <div>
     <p class="title">zip operator</p>
 
+    <h4>Θα φτιάξουμε ένα σουβλάκι</h4>
+
+    <button (click)="pita.next('pita')">Πρόσθεσε την πίτα</button>
+    <button (click)="kreas.next('kreas')">Πρόσθεσε το κρέας</button>
+    <button (click)="ntomata.next('ntomata')">Πρόσθεσε την ντομάτα</button>
+    <button (click)="kremidi.next('kremidi')">Πρόσθεσε το κρεμμύδι</button>
+    <button (click)="patates.next('patates')">Πρόσθεσε τις πατάτες</button>
+
+    <ng-container *ngIf="souvlaki$ | async as souvlaki">
+        <section class="mt-2">
+            <h5>Καλή όρεξη!</h5>
+
+            <ng-container *ngFor="let counter of souvlakiCounter(counter)">
+                <img src="assets/souvlaki.png" alt="" width="400">
+            </ng-container>
+
+            <h5 class="mt-2">Συστατικά:</h5>
+            <pre>{{ souvlaki | json }}</pre>
+        </section>
+    </ng-container>
+
 </div>
