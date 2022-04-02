@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, zip, of } from 'rxjs';
+import { Observable, Subject, zip } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 type Souvlaki = ["pita", "kreas", "ntomata", "kremidi", "patates"];
@@ -34,11 +34,11 @@ export class ZipComponent implements OnInit {
   ngOnInit(): void {
 
     this.souvlaki$ = zip(
-      this.pita.pipe(map((ing) => `${ing}${++pitaCounter}`),tap(console.log)),
-      this.kreas.pipe(map((ing) => `${ing}${++kreasCounter}`),tap(console.log)),
-      this.ntomata.pipe(map((ing) => `${ing}${++ntomataCounter}`),tap(console.log)),
-      this.kremidi.pipe(map((ing) => `${ing}${++kremidiCounter}`),tap(console.log)),
-      this.patates.pipe(map((ing) => `${ing}${++patatesCounter}`),tap(console.log))
+      this.pita.pipe(map((ing) => `${ing}${++pitaCounter}`), tap(console.log)),
+      this.kreas.pipe(map((ing) => `${ing}${++kreasCounter}`), tap(console.log)),
+      this.ntomata.pipe(map((ing) => `${ing}${++ntomataCounter}`), tap(console.log)),
+      this.kremidi.pipe(map((ing) => `${ing}${++kremidiCounter}`), tap(console.log)),
+      this.patates.pipe(map((ing) => `${ing}${++patatesCounter}`), tap(console.log))
     ).pipe(
       tap((souvlaki) => {
         console.log('Enjoy!', souvlaki);
