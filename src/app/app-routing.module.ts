@@ -13,6 +13,7 @@ import { SwitchMapComponent } from './operators/switch-map/switch-map.component'
 import { MergeMapComponent } from './operators/merge-map/merge-map.component';
 import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
 import { ZipComponent } from './operators/zip/zip.component';
+import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
 import { ShareComponent } from './operators/share/share.component';
 
 import { TestingComponent } from './pages/testing/testing.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'operators/mergeMap', component: MergeMapComponent},
   {path: 'operators/concatMap', component: ConcatMapComponent},
   {path: 'operators/zip', component: ZipComponent},
+  {path: 'operators/combineLatest', component: CombineLatestComponent},
   {path: 'operators/share', component: ShareComponent},
   {path: 'subjects', component: SubjectsComponent},
   {path: 'subjects/subjects', component: SubjectComponent},

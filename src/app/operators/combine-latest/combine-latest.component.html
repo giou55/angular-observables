@@ -1,7 +1,7 @@
 <div>
 
     <div>
-        <p class="title">zip operator</p>
+        <p class="title">combineLatest operator</p>
 
         <h4>Θα φτιάξουμε ένα σουβλάκι</h4>
 
@@ -50,10 +50,13 @@
 
     <div class="notes">
         <p class="title">Σημειώσεις</p>
-        <p>Με τον zip operator περιμένει το souvlaki$ observable να πάρει τουλάχιστον μια τιμή από όλα τα sources,
+        <p>Με τον combineLatest operator περιμένει το souvlaki$ observable να πάρει τουλάχιστον μια τιμή από όλα τα sources, 
             και μετά φτιάχνει το πρώτο observable συνδυάζοντας αυτές τις τιμές. </p>
-        <p>Τα sources μπορεί να στέλνουν πολλές τιμές, αλλά μόνο όταν έχει σταλεί μια δεύτερη τιμή από όλα τα sources δημιουργείται ένα νέο δεύτερο observable.</p>
-        <p>Οι τιμές που έχουν ήδη σταλεί από τα sources αποθηκεύονται σε queue, και στέλνονται με την ίδια σειρά στο επόμενο souvlaki$ observable που θα φτιαχτεί.</p>
+        <p>Μέχρι εδώ μοιάζει με τον zip operator.</p>
+        <p>Όμως για να φτιαχτεί ένα δεύτερο observable δεν χρειάζεται να σταλεί πάλι μια τιμή από όλα τα sources. 
+            Αρκεί κάποιο από τα sources να στείλει μια νέα τιμή.</p>
+        <p>Τότε δημιουργείται ένα νέο observable που έχει τις τελευταίες τιμές από τα υπόλοιπα sources σε συνδυασμό με την νέα 
+            τιμή που εστάλη από αυτό το source.</p>
     </div>
 
 </div>
