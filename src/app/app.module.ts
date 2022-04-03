@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
@@ -31,7 +30,6 @@ import { CombineLatestComponent } from './operators/combine-latest/combine-lates
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     HomeComponent,
     UserComponent,
     AngularObservablesComponent,
