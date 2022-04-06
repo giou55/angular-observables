@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, zip } from 'rxjs';
-import { map, tap, switchMap, take } from 'rxjs/operators';
+import { map, tap, mergeMap, take } from 'rxjs/operators';
 
 type Souvlaki = ["pita", "kreas", "ntomata", "kremidi", "patates"];
 
@@ -15,11 +15,11 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-switch-map',
-  templateUrl: './switch-map.component.html',
-  styleUrls: ['./switch-map.component.css']
+  selector: 'app-merge-map2',
+  templateUrl: './merge-map2.component.html',
+  styleUrls: ['./merge-map2.component.css']
 })
-export class SwitchMapComponent implements OnInit {
+export class MergeMap2Component implements OnInit {
   souvlaki$: Observable<Souvlaki>;
   delivery$: Observable<Product>;
 
@@ -66,7 +66,7 @@ export class SwitchMapComponent implements OnInit {
         console.log('New Order: ', order);
         this.deliveryCounter = +this.deliveryCounter + 1;
       }),
-      switchMap(
+      mergeMap(
         ({ amount, customerId }) => this.souvlaki$
           .pipe(
             take(amount),

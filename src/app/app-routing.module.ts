@@ -11,6 +11,7 @@ import { PipesComponent } from './pages/pipes/pipes.component';
 import { TakeLastComponent } from './operators/take-last/take-last.component';
 import { SwitchMapComponent } from './operators/switch-map/switch-map.component';
 import { MergeMapComponent } from './operators/merge-map/merge-map.component';
+import { MergeMap2Component } from './operators/merge-map2/merge-map2.component';
 import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
 import { ZipComponent } from './operators/zip/zip.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'operators/takeLast', component: TakeLastComponent},
   {path: 'operators/switchMap', component: SwitchMapComponent},
   {path: 'operators/mergeMap', component: MergeMapComponent},
+  {path: 'operators/mergeMap2', component: MergeMap2Component},
   {path: 'operators/concatMap', component: ConcatMapComponent},
   {path: 'operators/zip', component: ZipComponent},
   {path: 'operators/combineLatest', component: CombineLatestComponent},

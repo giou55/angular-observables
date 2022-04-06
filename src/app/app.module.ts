@@ -25,6 +25,7 @@ import { ZipComponent } from './operators/zip/zip.component';
 import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
 import { ShareComponent } from './operators/share/share.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
+import { MergeMap2Component } from './operators/merge-map2/merge-map2.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CombineLatestComponent } from './operators/combine-latest/combine-lates
     ZipComponent,
     ConcatMapComponent,
     ShareComponent,
-    CombineLatestComponent
+    CombineLatestComponent,
+    MergeMap2Component
   ],
   imports: [
     BrowserModule,
