@@ -1,34 +1,41 @@
 <div class="container1">
 
     <div>
-        <p class="title">switchMap operator</p>
+        <p class="title">switchMap with zip operator</p>
 
-        <h4>Θα φτιάξουμε ένα σουβλάκι</h4>
-
+        <h4>Θα παραγγείλουμε σουβλάκια</h4>
+        <hr>
         <div class="d-flex justify-content-start">
             <div class="d-flex flex-column bd-highlight mb-1">
-                <div>Έδωσα {{deliveryCounter}}</div>
-                <button (click)="dispatchOrder()">Πάρε μια παραγελία για σουβλάκια</button>
+                <button class="mb-2" (click)="dispatchOrder()">
+                    Πάρε μια παραγγελία για σουβλάκια
+                </button>
+                <div 
+                    *ngFor="let order of ordersArray; let i = index">
+                    Παραγγελία No{{i + 1}} - Σουβλάκια: {{order.amount}} 
+                </div>
             </div>
         </div>
 
+        <hr>
+
         <div class="d-flex justify-content-start">
-            <div class="d-flex flex-column bd-highlight mb-1">
+            <div class="d-flex flex-column bd-highlight mb-1 mr-3">
                 <div>Έβαλα {{pitaCounter}}</div>
                 <button (click)="pita.next('pita')">Βάλε πίτα</button>
             </div>
 
-            <div class="d-flex flex-column bd-highlight mb-1">
+            <div class="d-flex flex-column bd-highlight mb-1 mr-3">
                 <div>Έβαλα {{kreasCounter}}</div>
                 <button (click)="kreas.next('kreas')">Βάλε κρέας</button>
             </div>
 
-            <div class="d-flex flex-column bd-highlight mb-1">
+            <div class="d-flex flex-column bd-highlight mb-1 mr-3">
                 <div>Έβαλα {{ntomataCounter}}</div>
                 <button (click)="ntomata.next('ntomata')">Βάλε ντομάτα</button>
             </div>
 
-            <div class="d-flex flex-column bd-highlight mb-1">
+            <div class="d-flex flex-column bd-highlight mb-1 mr-3">
                 <div>Έβαλα {{kremidiCounter}}</div>
                 <button (click)="kremidi.next('kremidi')">Βάλε κρεμμύδι</button>
             </div>
@@ -39,16 +46,23 @@
             </div>
         </div>
 
+        <hr>
+
         <ng-container *ngIf="delivery$ | async as product">
             <section class="mt-2">
                 <h5>Καλή όρεξη!</h5>
 
-                <ng-container *ngFor="let counter of souvlakiCounter(counter)">
-                    <img src="assets/souvlaki.png" alt="" width="400">
+                <ng-container *ngFor="let counter of souvlakiaArray(souvlakiaCounter)">
+                    <img src="assets/souvlaki.png" alt="" width="200">
                 </ng-container>
 
-                <h5 class="mt-2">Συστατικά:</h5>
-                <pre>{{ product | json }}</pre>
+                <h5 class="mt-2">Φτιάξαμε {{productsArray.length}} Products (Σουβλάκια)</h5>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <div class="mr-5" 
+                        *ngFor="let product of productsArray; let i = index">
+                        Product No{{i + 1}}: <pre>{{product | json}} </pre>
+                    </div>
+                </div>
             </section>
         </ng-container>
 
@@ -57,8 +71,6 @@
 
     <div class="notes">
         <p class="title">Σημειώσεις</p>
-        <p>Στο switchMap όταν δοθεί μια νέα δεύτερη παραγγελία για σουβλάκια, τότε η προηγούμενη διαγράφεται, ακυρώνεται, 
-            και τα σουβλάκια που φτιάχνονται και στέλνονται από και στο εξής ανήκουν στην δεύτερη παραγγελία. </p>
 
     </div>
 

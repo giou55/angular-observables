@@ -34,6 +34,10 @@ export class MergeMap2Component implements OnInit {
   orderId = 0;
 
   order = new Subject<Order>();
+
+  // αν έχουν γίνει emit τρία Orders (παραγγελίες),
+  // τότε κάθε φορά που πατάμε ένα κουμπί
+  // στέλνεται τρεις φορές η τιμή από αυτό το Subject
   pita = new Subject<'pita'>();
   kreas = new Subject<'kreas'>();
   ntomata = new Subject<'ntomata'>();
@@ -49,6 +53,9 @@ export class MergeMap2Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // το souvlaki$ κάνει emit έναν πίνακα τύπου Souvlaki, εφόσον πάρει μια τιμή από όλα τα Subjects
+    // και κάνει complete όταν γίνουν emit όσα σουβλάκια αναφέρει το order
+    // μετά όσο και να πατάμε τα κουμπιά, δεν γίνεται emit τίποτα 
     this.souvlaki$ = zip(
       this.pita.pipe(map((ing) => `${ing}${++this.pitaCounter}`), tap(console.log)),
       this.kreas.pipe(map((ing) => `${ing}${++this.kreasCounter}`), tap(console.log)),
@@ -62,18 +69,33 @@ export class MergeMap2Component implements OnInit {
       })
     );
 
-    this.delivery$ = this.order.pipe( // το delivery$ 
-      tap((order) => {
+    // το delivery$ κάνει emit ένα Product, κάθε φορά που το order κάνει emit ένα Order
+    // το delivery$ ακούει και περιμένει το order
+    this.delivery$ = this.order.pipe( 
+      // αφού γίνει emit ένα Order εκτελείται ο παρακάτω κώδικας
+      tap((order) => { // περνιέται το order
         console.log('New Order: ', order);
         this.ordersArray.push(order);
       }),
+      // το mergeMap δέχεται σαν παράμετρο το order 
+      // και παρακολουθεί (γίνεται subscribe) το souvlaki$ πότε θα κάνει emit ένα Souvlaki,
+      // όμως για να γίνει το subscribe πρέπει πρώτα να γίνει emit ένα Order
       mergeMap(
+        // γίνεται destructuring στο Order
         ({ amount, id }) => this.souvlaki$
           .pipe(
+            // θα πάρουμε τόσες τιμές ανάλογα το amount του order, δηλαδή πόσα σουβλάκια θέλουνε,
+            // και μετά κάνει complete το souvlaki$
             take(amount),
-            map((souvlaki) => ({ product: souvlaki, orderId: id }))
+            // στην map περνιέται το Souvlaki που έχει γίνει emit από το souvlaki$
+            map((souvlaki) => 
+              // το Souvlaki μετατρέπεται σε Product, 
+              // το οποίο επιστρέφεται και στέλνεται στο delivery$ για να γίνει emit
+              ({ product: souvlaki, orderId: id })) 
           )
       ),
+      // αφού το souvlaki$ κάνει emit ένα Souvlaki 
+      // το mergeMap μεταφέρει και δίνει ένα Product στον επόμενο operator  
       tap((product) => {
         console.log('Delivered Product: ', product);
         this.productsArray.push(product);

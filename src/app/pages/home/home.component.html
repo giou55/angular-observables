@@ -8,17 +8,22 @@
         publish/subscribe design pattern.
     </p>
 
-    <p class="title">Observable</p>
+    <p class="title">Observables</p>
 
     <p>
         An Observable is a producer of multiple values, a data source that emits stream of values, "pushing" them to
         Observers.
     </p>
-
     <p>
         Observables are lazy. You define a function for publishing values, but it is not executed until a consumer
         (observer) subscribes to it.
         The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+    </p>
+    <p>
+        Observables can be created with new Observable. Most commonly, observables are created using creation functions, like of, from, interval, etc.
+    </p>
+    <p>
+        Subscribing to an Observable is like calling a function, providing callbacks where the data will be delivered to.
     </p>
 
     <p class="title">Observer</p>

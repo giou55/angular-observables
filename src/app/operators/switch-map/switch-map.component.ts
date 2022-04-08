@@ -6,12 +6,12 @@ type Souvlaki = ["pita", "kreas", "ntomata", "kremidi", "patates"];
 
 interface Order {
   amount: number;
-  customerId: number;
+  id: number;
 }
 
 interface Product {
   product: Souvlaki;
-  customerId: number;
+  orderId: number;
 }
 
 @Component({
@@ -22,6 +22,8 @@ interface Product {
 export class SwitchMapComponent implements OnInit {
   souvlaki$: Observable<Souvlaki>;
   delivery$: Observable<Product>;
+  ordersArray: Order[] = [];
+  productsArray: Product[] = [];
 
   pitaCounter = 0;
   kreasCounter = 0;
@@ -29,25 +31,31 @@ export class SwitchMapComponent implements OnInit {
   kremidiCounter = 0;
   patatesCounter = 0;
 
-  customerId = 0;
+  orderId = 0;
 
   order = new Subject<Order>();
+
+  // ανεξάρτητα πόσα Orders (παραγγελίες) έχουν γίνει emit,
+  // κάθε φορά που πατάμε ένα κουμπί
+  // στέλνεται μόνο μία φορά η τιμή από αυτό το Subject
   pita = new Subject<'pita'>();
   kreas = new Subject<'kreas'>();
   ntomata = new Subject<'ntomata'>();
   kremidi = new Subject<'kremidi'>();
   patates = new Subject<'patates'>();
 
-  souvlakiCounter(i: number) {
+  souvlakiaArray(i: number) {
     return new Array(i);
   }
-  counter: number = 0;
-  deliveryCounter: number = 0;
+
+  souvlakiaCounter: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-
+    // το souvlaki$ κάνει emit έναν πίνακα τύπου Souvlaki, εφόσον πάρει μια τιμή από όλα τα Subjects
+    // και κάνει complete όταν γίνουν emit όσα σουβλάκια αναφέρει το τελευταίο order
+    // μετά όσο και να πατάμε τα κουμπιά, δεν γίνεται emit τίποτα 
     this.souvlaki$ = zip(
       this.pita.pipe(map((ing) => `${ing}${++this.pitaCounter}`), tap(console.log)),
       this.kreas.pipe(map((ing) => `${ing}${++this.kreasCounter}`), tap(console.log)),
@@ -57,30 +65,48 @@ export class SwitchMapComponent implements OnInit {
     ).pipe(
       tap((souvlaki) => {
         console.log('Enjoy!', souvlaki);
-        this.counter = +this.counter + 1;
+        this.souvlakiaCounter = +this.souvlakiaCounter + 1;
       })
     );
 
-    this.delivery$ = this.order.pipe(
-      tap((order) => {
+    // το delivery$ κάνει emit ένα Product, κάθε φορά που το order κάνει emit ένα Order
+    // το delivery$ ακούει και περιμένει το order
+    this.delivery$ = this.order.pipe( 
+      // αφού γίνει emit ένα Order εκτελείται ο παρακάτω κώδικας
+      tap((order) => { // περνιέται το order
         console.log('New Order: ', order);
-        this.deliveryCounter = +this.deliveryCounter + 1;
+        this.ordersArray.push(order);
       }),
+      // το switchMap δέχεται σαν παράμετρο το order 
+      // και παρακολουθεί (γίνεται subscribe) το souvlaki$ πότε θα κάνει emit ένα Souvlaki,
+      // όμως για να γίνει το subscribe πρέπει πρώτα να γίνει emit ένα Order
       switchMap(
-        ({ amount, customerId }) => this.souvlaki$
+        // γίνεται destructuring στο Order
+        ({ amount, id }) => this.souvlaki$
           .pipe(
+            // θα πάρουμε τόσες τιμές ανάλογα το amount του order, δηλαδή πόσα σουβλάκια θέλουνε,
+            // και μετά κάνει complete το souvlaki$
             take(amount),
-            map((souvlaki) => ({ product: souvlaki, customerId: customerId }))
+            // στην map περνιέται το Souvlaki που έχει γίνει emit από το souvlaki$
+            map((souvlaki) => 
+              // το Souvlaki μετατρέπεται σε Product, 
+              // το οποίο επιστρέφεται και στέλνεται στο delivery$ για να γίνει emit
+              ({ product: souvlaki, orderId: id })) 
           )
       ),
-      tap(product => console.log('Delivered Product: ', product))
+      // αφού το souvlaki$ κάνει emit ένα Souvlaki 
+      // το switchMap μεταφέρει και δίνει ένα Product στον επόμενο operator  
+      tap((product) => {
+        console.log('Delivered Product: ', product);
+        this.productsArray.push(product);
+      })
     );
   }
 
   dispatchOrder() {
     const amount = Math.floor(Math.random() * 3) + 1;
-    ++this.customerId;
-    this.order.next({ amount, customerId: this.customerId });
+    ++this.orderId;
+    this.order.next({ amount, id: this.orderId });
   }
 
 }
