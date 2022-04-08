@@ -6,12 +6,12 @@ type Souvlaki = ["pita", "kreas", "ntomata", "kremidi", "patates"];
 
 interface Order {
   amount: number;
-  customerId: number;
+  id: number;
 }
 
 interface Product {
   product: Souvlaki;
-  customerId: number;
+  orderId: number;
 }
 
 @Component({
@@ -22,6 +22,8 @@ interface Product {
 export class MergeMap2Component implements OnInit {
   souvlaki$: Observable<Souvlaki>;
   delivery$: Observable<Product>;
+  ordersArray: Order[] = [];
+  productsArray: Product[] = [];
 
   pitaCounter = 0;
   kreasCounter = 0;
@@ -29,7 +31,7 @@ export class MergeMap2Component implements OnInit {
   kremidiCounter = 0;
   patatesCounter = 0;
 
-  customerId = 0;
+  orderId = 0;
 
   order = new Subject<Order>();
   pita = new Subject<'pita'>();
@@ -38,16 +40,15 @@ export class MergeMap2Component implements OnInit {
   kremidi = new Subject<'kremidi'>();
   patates = new Subject<'patates'>();
 
-  souvlakiCounter(i: number) {
+  souvlakiaArray(i: number) {
     return new Array(i);
   }
-  counter: number = 0;
-  deliveryCounter: number = 0;
+
+  souvlakiaCounter: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-
     this.souvlaki$ = zip(
       this.pita.pipe(map((ing) => `${ing}${++this.pitaCounter}`), tap(console.log)),
       this.kreas.pipe(map((ing) => `${ing}${++this.kreasCounter}`), tap(console.log)),
@@ -57,30 +58,33 @@ export class MergeMap2Component implements OnInit {
     ).pipe(
       tap((souvlaki) => {
         console.log('Enjoy!', souvlaki);
-        this.counter = +this.counter + 1;
+        this.souvlakiaCounter = +this.souvlakiaCounter + 1;
       })
     );
 
     this.delivery$ = this.order.pipe(
       tap((order) => {
         console.log('New Order: ', order);
-        this.deliveryCounter = +this.deliveryCounter + 1;
+        this.ordersArray.push(order);
       }),
       mergeMap(
-        ({ amount, customerId }) => this.souvlaki$
+        ({ amount, id }) => this.souvlaki$
           .pipe(
             take(amount),
-            map((souvlaki) => ({ product: souvlaki, customerId: customerId }))
+            map((souvlaki) => ({ product: souvlaki, orderId: id }))
           )
       ),
-      tap(product => console.log('Delivered Product: ', product))
+      tap((product) => {
+        console.log('Delivered Product: ', product);
+        this.productsArray.push(product);
+      })
     );
   }
 
   dispatchOrder() {
     const amount = Math.floor(Math.random() * 3) + 1;
-    ++this.customerId;
-    this.order.next({ amount, customerId: this.customerId });
+    ++this.orderId;
+    this.order.next({ amount, id: this.orderId });
   }
 
 }
