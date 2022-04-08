@@ -62,7 +62,7 @@ export class MergeMap2Component implements OnInit {
       })
     );
 
-    this.delivery$ = this.order.pipe(
+    this.delivery$ = this.order.pipe( // το delivery$ 
       tap((order) => {
         console.log('New Order: ', order);
         this.ordersArray.push(order);

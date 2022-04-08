@@ -1,25 +1,73 @@
 <div>
-    <p class="title">Angular Observables</p>
-    <pre>
-        Observables provide support for passing messages between parts of your application. 
+    <p class="title">The Observer pattern</p>
 
-        They are used frequently in Angular and are a technique for event handling, asynchronous programming, and handling multiple values.
+    <p>
+        The observer pattern is a software design pattern in which an object, called the subject, maintains a list of
+        its dependents, called observers,
+        and notifies them automatically of state changes. This pattern is similar (but not identical) to the
+        publish/subscribe design pattern.
+    </p>
 
-        The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, 
-        and notifies them automatically of state changes. This pattern is similar (but not identical) to the publish/subscribe design pattern.
-        
-        Observables are declarative—that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it. 
+    <p class="title">Observable</p>
+
+    <p>
+        An Observable is a producer of multiple values, a data source that emits stream of values, "pushing" them to
+        Observers.
+    </p>
+
+    <p>
+        Observables are lazy. You define a function for publishing values, but it is not executed until a consumer
+        (observer) subscribes to it.
         The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
-        
-        An observable can deliver multiple values of any type—literals, messages, or events, depending on the context. 
+    </p>
 
-        The API for receiving values is the same whether the values are delivered synchronously or asynchronously. 
-        
-        Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to 
-        consume values, and when done, unsubscribing. 
+    <p class="title">Observer</p>
 
-        Whether the stream was keystrokes, an HTTP response, or an interval timer, the interface for listening to values and stopping listening is the same.
-        
-        Because of these advantages, observables are used extensively within Angular, and for application development as well.</pre>
+    <p>
+        An Observer is a consumer of values, delivered by an Observable. Observers are simply a set of callbacks,
+        one for each type of notification delivered by the Observable: next, error, and complete.<br>
+        The following is an example of a typical Observer object:
+    </p>
+
+    <pre>
+        <code [innerHTML]="code1"></code>
+    </pre>
+
+    <p>
+        To use the Observer, provide it to the subscribe of an Observable:
+    </p>
+
+    <pre>
+        <code [innerHTML]="code2"></code>
+    </pre>
+
+    <p>
+        When subscribing to an Observable, you may also just provide the next callback as an argument, 
+        without being attached to an Observer object, for instance like this:
+    </p>
+
+    <pre>
+        <code [innerHTML]="code3"></code>
+    </pre>
+
+    <p class="title">Subscription</p>
+
+    <p>
+        Subscription represents the execution of an Observable, is primarily useful for cancelling the execution.
+    </p>
+
+    <p class="title">Operators</p>
+
+    <p>
+        Operators are pure functions that enable a functional programming style of dealing with collections with
+        operations like map, filter, concat, reduce, etc.
+    </p>
+
+    <p class="title">Subject</p>
+
+    <p>
+        Subject is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple
+        Observers.
+    </p>
+
 </div>
-    
