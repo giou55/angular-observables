@@ -1,0 +1,44 @@
+<div class="container1">
+
+    <div>
+        <p class="title">concatMap operator</p>
+    </div>
+
+    <div class="d-flex justify-content-start">
+        <div class="d-flex flex-column bd-highlight mb-1 mr-3">
+            <button (click)="order.next({ id: 1})">Πάρε παραγγελία από πελάτη 1</button>
+        </div>
+
+        <div class="d-flex flex-column bd-highlight mb-1 mr-3">
+            <button (click)="order.next({ id: 2})">Πάρε παραγγελία από πελάτη 2</button>
+        </div>
+
+        <div class="d-flex flex-column bd-highlight mb-1 mr-3">
+            <button (click)="order.next({ id: 3})">Πάρε παραγγελία από πελάτη 3</button>
+        </div>
+    </div>
+
+    <div class="notes">
+        <p class="title">Σημειώσεις</p>
+
+        <p>
+            Πατάμε σε ένα κουμπί για να δώσουμε μια παραγγελία. Καλείται ένα service 
+            που φτιάχνει τα σουβλάκια για την παραγγελία. Αυτό το service επιστρέφει 
+            ένα observable σε 3 δευτερόλεπτα.
+        </p>
+        <p>
+            Αφού δώσουμε μια παραγγελία, μπορούμε να πατήσουμε ένα άλλο κουμπί για να 
+            δώσουμε μια δεύτερη παραγγελία. Δεν πειράζει που δεν έχει τελειώσει η πρώτη 
+            παραγγελία. Οι παραγγελίες που δίνουμε αποθηκεύονται και εκτελούνται με την 
+            σειρά που δώθηκαν. 
+        </p>
+        <p>
+            Το service που φτιάχνει τα σουβλάκια, αφού φτιάξει τα σουβλάκια για την 
+            παραγγελία completes.
+            Έτσι πρέπει γιατί το concatMap περιμένει από αυτό το stream να γίνει completed. 
+        </p>
+
+
+    </div>
+
+</div>

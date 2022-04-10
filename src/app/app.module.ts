@@ -25,6 +25,8 @@ import { ConcatMapComponent } from './operators/concat-map/concat-map.component'
 import { ShareComponent } from './operators/share/share.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
 import { MergeMap2Component } from './operators/merge-map2/merge-map2.component';
+import { ConcatMap2Component } from './operators/concat-map2/concat-map2.component';
+import { ExhaustMapComponent } from './operators/exhaust-map/exhaust-map.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { MergeMap2Component } from './operators/merge-map2/merge-map2.component'
     ConcatMapComponent,
     ShareComponent,
     CombineLatestComponent,
-    MergeMap2Component
+    MergeMap2Component,
+    ConcatMap2Component,
+    ExhaustMapComponent
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@ export class SwitchMapComponent implements OnInit {
   order = new Subject<Order>();
 
   // ανεξάρτητα πόσα Orders (παραγγελίες) έχουν γίνει emit,
-  // κάθε φορά που πατάμε ένα κουμπί
+  // κάθε φορά που πατάμε ένα από τα κουμπιά
   // στέλνεται μόνο μία φορά η τιμή από αυτό το Subject
   pita = new Subject<'pita'>();
   kreas = new Subject<'kreas'>();
@@ -69,17 +69,17 @@ export class SwitchMapComponent implements OnInit {
       })
     );
 
-    // το delivery$ κάνει emit ένα Product, κάθε φορά που το order κάνει emit ένα Order
-    // το delivery$ ακούει και περιμένει το order
+    // το delivery$ κάνει emit ένα Product κάθε φορά που το order κάνει emit ένα Order,
+    // το delivery$ ακούει και περιμένει το Subject order
     this.delivery$ = this.order.pipe( 
       // αφού γίνει emit ένα Order εκτελείται ο παρακάτω κώδικας
-      tap((order) => { // περνιέται το order
+      tap((order) => {
         console.log('New Order: ', order);
         this.ordersArray.push(order);
       }),
       // το switchMap δέχεται σαν παράμετρο το order 
       // και παρακολουθεί (γίνεται subscribe) το souvlaki$ πότε θα κάνει emit ένα Souvlaki,
-      // όμως για να γίνει το subscribe πρέπει πρώτα να γίνει emit ένα Order
+      // όμως για να γίνει το subscribe πρέπει πρώτα να έχει γίνει emit ένα Order
       switchMap(
         // γίνεται destructuring στο Order
         ({ amount, id }) => this.souvlaki$
@@ -94,7 +94,6 @@ export class SwitchMapComponent implements OnInit {
               ({ product: souvlaki, orderId: id })) 
           )
       ),
-      // αφού το souvlaki$ κάνει emit ένα Souvlaki 
       // το switchMap μεταφέρει και δίνει ένα Product στον επόμενο operator  
       tap((product) => {
         console.log('Delivered Product: ', product);
