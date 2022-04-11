@@ -21,24 +21,24 @@ export class TestingComponent implements OnInit {
     this.postObs = this.http.get<any>(this.postUrl);
     this.commentsObs = this.http.get<any>(this.commentsUrl);
 
-    // this.commentsObs
-    //   .pipe(
-    //     switchMap(comments => {
-    //       return this.postObs
-    //         .pipe(
-    //           map(post => {
-    //             post.comments = comments;
-    //             return post;
-    //           })
-    //         )
-    //     })
-    //   )
-    //   .subscribe(
-    //     (newpost) => {
-    //       console.log(newpost);
-    //       this.post = newpost
-    //     }
-    //   )
+    this.commentsObs
+      .pipe(
+        switchMap(comments => {
+          return this.postObs
+            .pipe(
+              map(post => {
+                post.comments = comments;
+                return post;
+              })
+            )
+        })
+      )
+      .subscribe(
+        (newpost) => {
+          console.log(newpost);
+          this.post = newpost
+        }
+      )
 
       range(1,5)
       .pipe(

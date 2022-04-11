@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { switchMap, exhaustMap, tap } from 'rxjs/operators';
+import { exhaustMap, tap } from 'rxjs/operators';
 import { SouvlakiServiceService } from '../../services/souvlaki-service.service';
 
 @Component({
@@ -11,13 +11,13 @@ import { SouvlakiServiceService } from '../../services/souvlaki-service.service'
 export class ExhaustMapComponent implements OnInit {
   order = new Subject<{ id: number }>();
 
-  constructor(private souvlaki: SouvlakiServiceService) { }
+  constructor(private souvlakiService: SouvlakiServiceService) { }
 
   ngOnInit(): void {
     this.order
     .pipe(
       tap((order) => console.log("order: ", order.id)),
-      exhaustMap((order) => this.souvlaki.makeSouvlaki(order.id))
+      exhaustMap((order) => this.souvlakiService.makeSouvlaki(order.id))
     ).subscribe(console.log);
   }
 

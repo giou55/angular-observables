@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { switchMap, concatMap, tap } from 'rxjs/operators';
+import { concatMap, tap } from 'rxjs/operators';
 import { SouvlakiServiceService } from '../../services/souvlaki-service.service';
 
 @Component({
@@ -11,13 +11,13 @@ import { SouvlakiServiceService } from '../../services/souvlaki-service.service'
 export class ConcatMap2Component implements OnInit {
   order = new Subject<{ id: number }>();
 
-  constructor(private souvlaki: SouvlakiServiceService) { }
+  constructor(private souvlakiService: SouvlakiServiceService) { }
 
   ngOnInit(): void {
     this.order
     .pipe(
       tap((order) => console.log("order: ", order.id)),
-      concatMap((order) => this.souvlaki.makeSouvlaki(order.id))
+      concatMap((order) => this.souvlakiService.makeSouvlaki(order.id))
     ).subscribe(console.log);
   }
 

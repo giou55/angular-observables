@@ -18,10 +18,11 @@ import { ZipComponent } from './operators/zip/zip.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
 import { ShareComponent } from './operators/share/share.component';
 
-import { TestingComponent } from './pages/testing/testing.component';
 import { SubjectComponent } from './subjects/subject/subject.component';
 import { BehaviorSubjectComponent } from './subjects/behavior-subject/behavior-subject.component';
 import { ReplaySubjectComponent } from './subjects/replay-subject/replay-subject.component';
+import { TestingComponent } from './pages/testing/testing.component';
+import { Testing2Component } from './pages/testing2/testing2.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'subjects/replay-subjects', component: ReplaySubjectComponent},
   {path: 'pipes', component: PipesComponent},
   {path: 'testing', component: TestingComponent},
+  {path: 'testing2', component: Testing2Component},
 ];
 
 @NgModule({

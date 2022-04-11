@@ -10,6 +10,11 @@ export class SouvlakiServiceService {
 
   constructor() { }
 
+  // after 3 seconds it returns an observable as below
+  //    [
+  //      1,
+  //      ["pita", "kreas", "ntomata", "kremidi", "patates"]
+  //    ] 
   makeSouvlaki(orderId){
     return from([
       orderId,

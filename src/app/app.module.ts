@@ -27,6 +27,7 @@ import { CombineLatestComponent } from './operators/combine-latest/combine-lates
 import { MergeMap2Component } from './operators/merge-map2/merge-map2.component';
 import { ConcatMap2Component } from './operators/concat-map2/concat-map2.component';
 import { ExhaustMapComponent } from './operators/exhaust-map/exhaust-map.component';
+import { Testing2Component } from './pages/testing2/testing2.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ExhaustMapComponent } from './operators/exhaust-map/exhaust-map.compone
     CombineLatestComponent,
     MergeMap2Component,
     ConcatMap2Component,
-    ExhaustMapComponent
+    ExhaustMapComponent,
+    Testing2Component
   ],
   imports: [
     BrowserModule,
