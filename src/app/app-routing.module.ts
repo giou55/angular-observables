@@ -16,6 +16,7 @@ import { ConcatMap2Component } from './operators/concat-map2/concat-map2.compone
 import { ExhaustMapComponent } from './operators/exhaust-map/exhaust-map.component';
 import { ZipComponent } from './operators/zip/zip.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
+import { CombineLatest2Component } from './operators/combine-latest2/combine-latest2.component';
 import { ShareComponent } from './operators/share/share.component';
 
 import { SubjectComponent } from './subjects/subject/subject.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'operators/exhaustMap', component: ExhaustMapComponent},
   {path: 'operators/zip', component: ZipComponent},
   {path: 'operators/combineLatest', component: CombineLatestComponent},
+  {path: 'operators/combineLatest2', component: CombineLatest2Component},
   {path: 'operators/share', component: ShareComponent},
   {path: 'subjects', component: SubjectsComponent},
   {path: 'subjects/subjects', component: SubjectComponent},

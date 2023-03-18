@@ -24,6 +24,7 @@ import { ZipComponent } from './operators/zip/zip.component';
 import { ConcatMapComponent } from './operators/concat-map/concat-map.component';
 import { ShareComponent } from './operators/share/share.component';
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
+import { CombineLatest2Component } from './operators/combine-latest2/combine-latest2.component';
 import { MergeMap2Component } from './operators/merge-map2/merge-map2.component';
 import { ConcatMap2Component } from './operators/concat-map2/concat-map2.component';
 import { ExhaustMapComponent } from './operators/exhaust-map/exhaust-map.component';
@@ -51,6 +52,7 @@ import { Testing2Component } from './pages/testing2/testing2.component';
     ConcatMapComponent,
     ShareComponent,
     CombineLatestComponent,
+    CombineLatest2Component,
     MergeMap2Component,
     ConcatMap2Component,
     ExhaustMapComponent,
